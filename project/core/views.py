@@ -26,7 +26,7 @@ def criar_post(request):
         post = PostModel.objects.create(titulo=titulo, conteudo=conteudo, user=request.user)
         post.save()
              
-    return render(request, "criarpost.html", {"post": post})
+    return render(request, "criarpost.html")
 
 def login(request):
     if request.user.is_authenticated:

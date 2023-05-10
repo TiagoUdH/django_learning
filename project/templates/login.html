@@ -12,15 +12,18 @@
 
     <form action="/login/" method="post">
         {% csrf_token %}
-        <label for="usuario">User:</label>
-        <input type="text" name="usuario">
 
-        <label for="senha">Password:</label>
-        <input type="password" name="senha" id="senha">
+        <div class="form-group my-2">
+            <label for="usuario">User:</label>
+            <input type="text" name="usuario" class="form-control">
+        </div>
 
-        <br>
-
-        <button>Logar</button>
+        <div class="form-group my-2">
+            <label for="senha">Password:</label>
+            <input type="password" name="senha" id="senha" class="form-control">
+        </div>
+        
+        <button class="btn btn-success">Logar</button>
     </form>
 </div>
 {% endblock %}
