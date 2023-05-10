@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block titulo %}Login{% endblock %}
+
+{% block conteudo %}
+<div>
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+    <form action="/cadastro/" method="post">
+        {% csrf_token %}
+
+        <label for="usuario">User:</label>
+        <input type="text" name="usuario"><br>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email"><br>
+
+        <label for="primeiro_nome">Primeiro Nome:</label>
+        <input type="text" name="primeiro_nome"><br>
+
+        <label for="segundo_nome">Segundo Nome:</label>
+        <input type="text" name="segundo_nome"><br>
+
+        <label for="senha">Password:</label>
+        <input type="password" name="senha" id="senha"><br>
+
+        <label for="confirmar_senha">Confirmar Password:</label>
+        <input type="password" name="confirmar_senha" id="confirmar_senha">
+
+        <br>
+
+        <button>Cadastro</button>
+    </form>
+</div>
+{% endblock %}

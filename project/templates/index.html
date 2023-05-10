@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block titulo %}Home{% endblock %}
+
+{% block conteudo %}
+<div>
+    {% include "header.html" %}
+
+    <br>
+</div>
+
+{% if user.is_authenticated %}
+<a href="/criar/post/">Criar post</a>
+{% endif %}
+
+<div>
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+    {% for i in posts %}
+        <h2>{{ i.titulo }}</h2>
+        <p>{{ i.conteudo }}</p>
+        <a href="/post/{{i.id}}">Acessar post</a>
+    {% endfor %}
+</div>
+{% endblock %}
