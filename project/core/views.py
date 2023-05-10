@@ -25,6 +25,9 @@ def criar_post(request):
         
         post = PostModel.objects.create(titulo=titulo, conteudo=conteudo, user=request.user)
         post.save()
+        
+        messages.success(request, "Post criado com sucesso")
+        return redirect("home")
              
     return render(request, "criarpost.html")
 
@@ -104,3 +107,62 @@ def cadastro(request):
         return redirect("login")
     
     return render(request, "cadastro.html")
+
+def editar_post(request):
+    if not request.user.is_authenticated:
+        messages.error(request, "Usuário não logado")
+        
+        return redirect("login")
+    
+    if request.method == "POST":
+        if not request.POST.get("id"):
+            messages.error(request, "Post não encontrado")
+            return redirect("home")
+        
+        post = PostModel.objects.filter(id=int(request.POST.get("id"))).first()
+    
+        if post.user != request.user and not request.user.is_staff:
+            messages.error(request, "Usuario sem permissao")
+            return redirect("home")
+        
+        titulo = request.POST["titulo"]
+        conteudo = request.POST["conteudo"]
+        
+        post.titulo = titulo
+        post.conteudo = conteudo
+        post.save()
+        
+        messages.success(request, "Post editado com sucesso")
+        return redirect("home")
+    
+    if not request.GET.get("id"):
+        messages.error(request, "Post não encontrado")
+        return redirect("home")
+        
+    post = PostModel.objects.filter(id=int(request.GET.get("id"))).first()
+    
+    if post.user != request.user and not request.user.is_staff:
+        messages.error(request, "Usuario sem permissao")
+        return redirect("home")
+    
+    return render(request, "editar_post.html", {"post": post})
+    
+def deletar_post(request):
+    if not request.user.is_authenticated:
+        messages.error(request, "Usuário não logado")
+        
+        return redirect("login")
+    
+    if not request.GET.get("id"):
+        messages.error(request, "Post não encontrado")
+        return redirect("home")
+        
+    post = PostModel.objects.filter(id=int(request.GET.get("id"))).first()
+    
+    if post.user != request.user and not request.user.is_staff:
+        messages.error(request, "Usuario sem permissao")
+        return redirect("home")
+    
+    post.delete()
+    messages.success(request, "Post deletado com sucesso")
+    return redirect("home")
