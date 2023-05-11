@@ -23,6 +23,10 @@
     {% for i in posts %}
         <div class="card my-2">
             <div class="card-header">
+                {% if i.foto %}
+                    <img src="/media/{{ i.foto }}" alt="{{ i.titulo }}">
+                {% endif %}
+
                 <h2>{{ i.titulo }}</h2>
             </div>
 

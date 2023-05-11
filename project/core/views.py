@@ -25,9 +25,10 @@ def criar_post(request):
     if request.method == "POST":
         titulo = request.POST["titulo"]
         conteudo = request.POST["conteudo"]
+        imagem = request.FILES["imagem"]
 
         post = PostModel.objects.create(
-            titulo=titulo, conteudo=conteudo, user=request.user
+            titulo=titulo, conteudo=conteudo, user=request.user, foto=imagem
         )
         post.save()
 
@@ -142,9 +143,11 @@ def editar_post(request):
 
         titulo = request.POST["titulo"]
         conteudo = request.POST["conteudo"]
+        imagem = request.FILES["imagem"]
 
         post.titulo = titulo
         post.conteudo = conteudo
+        post.foto = imagem
         post.save()
 
         messages.success(request, "Post editado com sucesso")
