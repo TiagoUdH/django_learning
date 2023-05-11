@@ -3,20 +3,20 @@
 {% block titulo %}Home{% endblock %}
 
 {% block conteudo %}
+
 <div>
     {% include "header.html" %}
-
     <br>
 </div>
 
 {% if user.is_authenticated %}
-<a href="/criar/post/" class="btn btn-primary">Criar post</a>
+<a href="/criar/post" class="btn btn-primary">Criar post</a>
 {% endif %}
 
 <div>
     {% if messages %}
-        {% for message in messages %}
-            <p>{{ message }}</p>
+        {%for message in messages%}
+            <p>{{message}}</p>
         {% endfor %}
     {% endif %}
 
@@ -24,21 +24,19 @@
         <div class="card my-2">
             <div class="card-header">
                 {% if i.foto %}
-                    <img src="/media/{{ i.foto }}" alt="{{ i.titulo }}">
-                {% endif %}
-
+                <img src="/media/{{i.foto}}" alt="{{ i.titulo }}">
+                {%endif%}
                 <h2>{{ i.titulo }}</h2>
             </div>
-
             <div class="card-body">
-                <p>{{ i.conteudo }}</p>
+                <p>{{i.conteudo}}</p>
                 <a href="/post/{{i.id}}">Acessar post</a>
             </div>
-
             <div class="card-footer">
-                <a href="{% url 'user' i.user.id %}">{{ i.user.username }}</a>
+                <a href="{% url 'user' i.user.id %}">{{i.user.username}}</a>
             </div>
         </div>
     {% endfor %}
 </div>
+
 {% endblock %}

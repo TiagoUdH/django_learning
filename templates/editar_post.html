@@ -1,23 +1,21 @@
 {% extends "base.html" %}
 
 {% block titulo %}Home{% endblock %}
-        
+
 {% block conteudo %}
 <div>
     {% if messages %}
-        {% for message in messages %}
-            <p>{{ message }}</p>
+        {%for message in messages%}
+            <p>{{message}}</p>
         {% endfor %}
     {% endif %}
-    
+
     <form action="/editar/post/" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-
-        <input type="number" value="{{post.id }}" hidden name="id">
-
+        <input type="number" value="{{post.id}}" name="id" hidden>
         <div class="form-group my-2">
             <label for="titulo">Titulo:</label>
-            <input type="text" name="titulo" class="form-control" value="{{post.titulo}}">
+            <input type="text" name="titulo"  class="form-control" value="{{post.titulo}}">
         </div>
 
         <div class="form-group my-2">
@@ -27,11 +25,11 @@
 
         <div class="form-group my-2">
             <label for="imagem">Imagem:</label>
-            <input type="file" name="imagem" class="form-control">
+            <input type="file" name="imagem" id="imagem" class="form-control">
         </div>
-        
         <br>
         <button class="btn btn-success">Editar</button>
     </form>
 </div>
+
 {% endblock %}

@@ -5,18 +5,17 @@
 {% block conteudo %}
 <div>
     <a href="{% url 'home' %}">Home</a>
-
+    <br>
     {% if messages %}
-        {% for message in messages %}
-            <p>{{ message }}</p>
+        {%for message in messages%}
+            <p>{{message}}</p>
         {% endfor %}
     {% endif %}
 
     <form action="/cadastro/" method="post">
         {% csrf_token %}
-
         <div class="form-group my-2">
-            <label for="usuario">User:</label>
+            <label for="titulo">User:</label>
             <input type="text" name="usuario" class="form-control">
         </div>
 
@@ -44,8 +43,8 @@
             <label for="confirmar_senha">Confirmar Password:</label>
             <input type="password" name="confirmar_senha" id="confirmar_senha" class="form-control">
         </div>
-
         <button class="btn btn-success">Cadastro</button>
     </form>
 </div>
+
 {% endblock %}
