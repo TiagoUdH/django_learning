@@ -4,12 +4,6 @@
 
 {% block conteudo %}
 <div>
-    {% if messages %}
-        {%for message in messages%}
-            <p>{{message}}</p>
-        {% endfor %}
-    {% endif %}
-
     <form action="/criar/post/" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-group my-2">

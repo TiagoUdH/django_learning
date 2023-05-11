@@ -6,11 +6,6 @@
 <div>
     <a href="{% url 'home' %}">Home</a>
     <br>
-    {% if messages %}
-        {%for message in messages%}
-            <p>{{message}}</p>
-        {% endfor %}
-    {% endif %}
 
     <form action="/cadastro/" method="post">
         {% csrf_token %}

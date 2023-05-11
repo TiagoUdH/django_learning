@@ -4,11 +4,6 @@
 
 {% block conteudo %}
 <div>
-    {% if messages %}
-        {%for message in messages%}
-            <p>{{message}}</p>
-        {% endfor %}
-    {% endif %}
 
     <form action="/editar/post/" method="post" enctype="multipart/form-data">
         {% csrf_token %}

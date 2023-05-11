@@ -5,11 +5,6 @@
 {% block conteudo %}
 <div>
     <a href="{% url 'home' %}">Home</a>
-    {% if messages %}
-        {%for message in messages%}
-            <p>{{message}}</p>
-        {% endfor %}
-    {% endif %}
 
     <form action="/login/" method="post">
         {% csrf_token %}
