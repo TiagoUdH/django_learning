@@ -3,9 +3,6 @@
 {% block titulo %}Home{% endblock %}
 
 {% block content %}
-{% if user.is_authenticated %}
-<a href="/criar/post" class="btn btn-primary">Criar post</a>
-{% endif %}
 
 <div>
     {% for i in posts %}

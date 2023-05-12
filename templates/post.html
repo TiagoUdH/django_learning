@@ -3,9 +3,6 @@
 {% block titulo %}{{post.titulo}}{% endblock %}
 
 {% block content %}
-
-<a href="{% url 'home' %}">Home</a>
-
 {% if user.is_authenticated %}
 {% if post.user == user or user.is_staff %}
 <div class="d-flex">

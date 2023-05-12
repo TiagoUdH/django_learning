@@ -18,7 +18,7 @@ def post(request, id):
     return render(request, "post.html", {"post": post})
 
 
-def criar_post(request):
+def create_post(request):
     if not request.user.is_authenticated:
         return redirect("login")
 
@@ -43,15 +43,15 @@ def login(request):
         return redirect("home")
 
     if request.method == "POST":
-        usuario = request.POST["usuario"]
-        password = request.POST["senha"]
+        person = request.POST["person"]
+        password = request.POST["password"]
 
-        if usuario == "" or password == "":
+        if person == "" or password == "":
             messages.error(request, "Os campos usuario e senha não podem ser vazios")
             return redirect("login")
 
-        if User.objects.filter(username=usuario).exists():
-            user = authenticate(request, username=usuario, password=password)
+        if User.objects.filter(username=person).exists():
+            user = authenticate(request, username=person, password=password)
 
             if user is not None:
                 auth.login(request, user)
@@ -66,7 +66,7 @@ def login(request):
             messages.error(request, "Usuario inexistente")
             return redirect("login")
 
-    return render(request, "login.html")
+    return render(request, "public/login.html")
 
 
 def logout(request):

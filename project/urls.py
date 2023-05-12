@@ -21,7 +21,7 @@ from django.conf import settings
 from core.views import (
     home,
     post,
-    criar_post,
+    create_post,
     login,
     logout,
     signup,
@@ -34,7 +34,7 @@ urlpatterns = [
     path("admin/", admin.site.urls, name="admin"),
     path("", home, name="home"),
     path("post/<int:id>/", post, name="post"),
-    path("criar/post/", criar_post, name="criar_post"),
+    path("post/create/", create_post, name="create_post"),
     path("editar/post/", editar_post, name="editar_post"),
     path("deletar/post/", deletar_post, name="deletar_post"),
     path("login/", login, name="login"),
