@@ -74,7 +74,7 @@ def logout(request):
     return redirect("home")
 
 
-def cadastro(request):
+def signup(request):
     if request.user.is_authenticated:
         return redirect("home")
 
@@ -94,19 +94,19 @@ def cadastro(request):
             or senha == ""
         ):
             messages.error(request, "Todos os campos são obrigatorios")
-            return redirect("cadastro")
+            return redirect("signup")
 
         if senha != confirmar_senha:
             messages.error(request, "As senhas não coincidem")
-            return redirect("cadastro")
+            return redirect("signup")
 
         if User.objects.filter(email=email).exists():
             messages.error(request, "Usuario com esse email ja existe")
-            return redirect("cadastro")
+            return redirect("signup")
 
         if User.objects.filter(username=usuario).exists():
             messages.error(request, "Usuario com esse username ja existe")
-            return redirect("cadastro")
+            return redirect("signup")
 
         user = User.objects.create_user(
             username=usuario,

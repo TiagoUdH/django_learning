@@ -2,12 +2,12 @@
 
 {% block titulo %}Login{% endblock %}
 
-{% block conteudo %}
+{% block content %}
 <div>
     <a href="{% url 'home' %}">Home</a>
     <br>
 
-    <form action="/cadastro/" method="post">
+    <form action="/signup/" method="post">
         {% csrf_token %}
         <div class="form-group my-2">
             <label for="titulo">User:</label>

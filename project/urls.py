@@ -24,7 +24,7 @@ from core.views import (
     criar_post,
     login,
     logout,
-    cadastro,
+    signup,
     editar_post,
     deletar_post,
     user,
@@ -39,6 +39,6 @@ urlpatterns = [
     path("deletar/post/", deletar_post, name="deletar_post"),
     path("login/", login, name="login"),
     path("logout/", logout, name="logout"),
-    path("cadastro/", cadastro, name="cadastro"),
+    path("signup/", signup, name="signup"),
     path("user/<int:id>/", user, name="user"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

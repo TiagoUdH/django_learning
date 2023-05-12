@@ -2,13 +2,7 @@
 
 {% block titulo %}Home{% endblock %}
 
-{% block conteudo %}
-
-<div>
-    {% include "header.html" %}
-    <br>
-</div>
-
+{% block content %}
 {% if user.is_authenticated %}
 <a href="/criar/post" class="btn btn-primary">Criar post</a>
 {% endif %}
